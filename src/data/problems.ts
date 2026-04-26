@@ -39,16 +39,15 @@ export const SEASON_START_ISO = "2025-01-04T23:59:00-08:00"
 export const PROBLEMS: WeekProblems[] = [
   {
     week: 1,
-    title: "Welcome to the Mathathon",
     divisionA: {
-      statement: "Compute $\\dfrac{1}{2} + \\dfrac{1}{3}$.",
-      answers: ["5/6", "\\frac{5}{6}", "0.8333333333"],
-      solution: "Common denominator is $6$: $\\dfrac{1}{2}+\\dfrac{1}{3}=\\dfrac{3}{6}+\\dfrac{2}{6}=\\boxed{\\dfrac{5}{6}}.$",
+      statement: "A lake contains $250$ trout, along with a variety of other fish. When a marine biologist catches and releases a sample of $180$ fish from the lake, $30$ are identified as trout. Assume that the ratio of trout to the total number of fish is the same in both the sample and the lake. How many fish are there in the lake?",
+      answers: ["1500"],
+      solution: "Note that $$\\frac{\\text{number of trout}}{\\text{total number of fish}} = \\frac{30}{180} = \\frac{1}{6}.$$ So, the total number of fish is $6$ times the number of trout. Since the lake contains $250$ trout, there are $250\\cdot 6 = \\boxed{1500}$ fish in the lake.",
     },
     divisionB: {
-      statement: "Find the smallest positive integer $n$ such that $n!$ ends in exactly $5$ trailing zeros.",
-      answers: ["25"],
-      solution: "The number of trailing zeros of $n!$ equals $\\sum_{k\\ge 1} \\lfloor n/5^k\\rfloor$. For $n=24$: $4$. For $n=25$: $5+1=6$. For $n=20,21,22,23,24$ we get $4$, and for $n=25$ we already get $6$. So no $n$ gives exactly $5$? Wait — checking $n=20$ gives $4+0=4$; $n=24$ gives $4$; $n=25$ jumps to $6$. So in fact no $n$ gives exactly $5$ — replace this with your real problem. (Placeholder.)",
+      statement: "Fifteen integers $a_1, a_2, a_3, \\dots, a_{15}$ are arranged in order on a number line. The integers are equally spaced and have the property that $$1 \\le a_1 \\le 10, \\quad 13 \\le a_2 \\le 20, \\quad \\text{and} \\quad 241 \\le a_{15} \\le 250.$$ What is the sum of digits of $a_{14}$?",
+      answers: ["8"],
+      solution: "We can find the possible values of the common difference by finding the numbers which satisfy the conditions. To do this, we find the minimum of the last two: $241-20=221$, and the maximum: $250-13=237$. There is a difference of $13$ between them, so only $17$ and $18$ work, as $17\\cdot 13=221$, so $17$ satisfies $221\\leq 13x\\leq 237$. The number $18$ is similarly found. $19$, however, is too much.\n\nNow, we check with the first and last equations using the same method. We know $241-10\\leq 14x\\leq 250-1$. Therefore, $231\\leq 14x\\leq 249$. We test both values, and we find that $18$ is too large to satisfy this inequality. On the other hand, $17$ satisfies it, so the common difference is $17$.\n\nThe last step is to find the first term. The first term can only be from $1$ to $3$ since any larger value would render the second inequality invalid. Testing these three, we find that only $a_1=3$ satisfies all the inequalities. Therefore, $a_{14}=13\\cdot 17+3=224$. The sum of the digits is $2+2+4=\\boxed{8}$.",
     },
   },
 ]
