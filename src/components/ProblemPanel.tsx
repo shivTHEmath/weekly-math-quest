@@ -10,6 +10,12 @@ import { supabase } from "@/integrations/supabase/client"
 import { getClientId } from "@/lib/clientId"
 import { toast } from "sonner"
 import Leaderboard from "./Leaderboard"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 const COOLDOWN_MS = 60_000
 
@@ -160,6 +166,29 @@ export default function ProblemPanel({
                 Preview: <span className="text-foreground"><Tex>{`$${answer}$`}</Tex></span>
               </div>
             )}
+            <Accordion type="single" collapsible className="rounded-2xl border border-border bg-secondary/30 px-4">
+              <AccordionItem value="help" className="border-none">
+                <AccordionTrigger className="text-sm py-3 hover:no-underline">
+                  How to format your answer
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-muted-foreground pb-4">
+                  <p className="mb-2">
+                    You can type answers as a plain number, LaTeX, or AsciiMath. The grader checks both the exact text and the numeric value (to ~10 decimal places).
+                  </p>
+                  <ul className="space-y-1.5">
+                    <li><span className="font-medium text-foreground">Plain number:</span> <code className="font-mono">1500</code>, <code className="font-mono">0.5</code>, <code className="font-mono">-3/4</code></li>
+                    <li><span className="font-medium text-foreground">Fractions:</span> <code className="font-mono">5/6</code> or LaTeX <code className="font-mono">{`\\frac{5}{6}`}</code></li>
+                    <li><span className="font-medium text-foreground">Square root:</span> <code className="font-mono">sqrt(4)</code> or LaTeX <code className="font-mono">{`\\sqrt{4}`}</code> (not <code className="font-mono">sqrt4</code>)</li>
+                    <li><span className="font-medium text-foreground">nth root:</span> <code className="font-mono">nthRoot(8,3)</code> or <code className="font-mono">{`\\sqrt[3]{8}`}</code></li>
+                    <li><span className="font-medium text-foreground">Exponents:</span> <code className="font-mono">2^10</code> or <code className="font-mono">{`2^{10}`}</code></li>
+                    <li><span className="font-medium text-foreground">Multiply:</span> <code className="font-mono">3*4</code>, <code className="font-mono">{`3\\cdot 4`}</code>, or <code className="font-mono">{`3\\times 4`}</code></li>
+                    <li><span className="font-medium text-foreground">Constants:</span> <code className="font-mono">pi</code>, <code className="font-mono">e</code> (or <code className="font-mono">{`\\pi`}</code>)</li>
+                    <li><span className="font-medium text-foreground">Functions:</span> <code className="font-mono">sin(x)</code>, <code className="font-mono">cos(x)</code>, <code className="font-mono">log(x)</code>, <code className="font-mono">ln(x)</code></li>
+                  </ul>
+                  <p className="mt-3">Wrap groups in parentheses when in doubt — e.g. <code className="font-mono">(1+sqrt(5))/2</code>.</p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <Button onClick={submit} disabled={submitting || onCooldown} className="rounded-full bg-gradient-primary hover:opacity-90">
                 {submitting ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
