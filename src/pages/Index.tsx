@@ -1,15 +1,15 @@
-import { useMemo, useState } from "react"
-import SiteNav from "@/components/SiteNav"
-import SiteFooter from "@/components/SiteFooter"
-import ProblemPanel from "@/components/ProblemPanel"
-import CountdownToNextRelease from "@/components/CountdownToNextRelease"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { getCurrentWeek, weekId } from "@/data/problems"
-import { Sparkles } from "lucide-react"
+import { useMemo, useState } from "react";
+import SiteNav from "@/components/SiteNav";
+import SiteFooter from "@/components/SiteFooter";
+import ProblemPanel from "@/components/ProblemPanel";
+import CountdownToNextRelease from "@/components/CountdownToNextRelease";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getCurrentWeek, weekId } from "@/data/problems";
+import { Sparkles } from "lucide-react";
 
 const Index = () => {
-  const week = useMemo(() => getCurrentWeek(), [])
-  const [tab, setTab] = useState<"A" | "B">("A")
+  const week = useMemo(() => getCurrentWeek(), []);
+  const [tab, setTab] = useState<"A" | "B">("A");
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -25,7 +25,8 @@ const Index = () => {
               Problem of the <span className="text-primary">Week</span>
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-lg">
-              A new pair of math problems drops every Saturday at 11:59 PM PST. Pick your division, solve, and earn a spot on the leaderboard.
+              The new Problem of the Week drops every Sunday. It's great practice for the STEMist Mathathon — choose the
+              problem from your division and give it a try! However, feel free to try both problems if you'd like!
             </p>
             <div className="mt-5 flex justify-center">
               <CountdownToNextRelease />
@@ -37,7 +38,9 @@ const Index = () => {
           {!week ? (
             <div className="rounded-3xl border border-border bg-card p-10 text-center shadow-soft">
               <h2 className="font-display text-2xl font-bold">The season hasn't started yet.</h2>
-              <p className="text-muted-foreground mt-2">Come back at the first release date — the countdown above is ticking.</p>
+              <p className="text-muted-foreground mt-2">
+                Come back at the first release date — the countdown above is ticking.
+              </p>
             </div>
           ) : (
             <>
@@ -49,8 +52,12 @@ const Index = () => {
               </div>
               <Tabs value={tab} onValueChange={(v) => setTab(v as "A" | "B")}>
                 <TabsList className="rounded-full p-1 bg-secondary mb-6">
-                  <TabsTrigger value="A" className="rounded-full px-5">Division A · Easier</TabsTrigger>
-                  <TabsTrigger value="B" className="rounded-full px-5">Division B · Harder</TabsTrigger>
+                  <TabsTrigger value="A" className="rounded-full px-5">
+                    Division A · Easier
+                  </TabsTrigger>
+                  <TabsTrigger value="B" className="rounded-full px-5">
+                    Division B · Harder
+                  </TabsTrigger>
                 </TabsList>
                 <TabsContent value="A">
                   <ProblemPanel weekId={weekId(week.week)} division="A" problem={week.divisionA} />
@@ -65,7 +72,7 @@ const Index = () => {
       </main>
       <SiteFooter />
     </div>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
