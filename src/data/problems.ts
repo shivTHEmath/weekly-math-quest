@@ -34,7 +34,7 @@ export type WeekProblems = {
 // First Saturday 11:59pm PST when week 1 should be live.
 // Update this to the date you want the season to begin.
 // Time is fixed at Saturday 23:59 America/Los_Angeles.
-export const SEASON_START_ISO = "2025-01-04T23:59:00-08:00"
+export const SEASON_START_ISO = "2026-04-25T23:59:00-08:00"
 
 export const PROBLEMS: WeekProblems[] = [
   {
