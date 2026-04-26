@@ -2,7 +2,7 @@ import { MathJaxContext, MathJax } from "better-react-mathjax"
 import { ReactNode } from "react"
 
 const config = {
-  loader: { load: ["[tex]/ams", "[tex]/boldsymbol", "input/asciimath"] },
+  loader: { load: ["input/asciimath", "[tex]/ams", "[tex]/boldsymbol"] },
   tex: {
     packages: { "[+]": ["ams", "boldsymbol"] },
     inlineMath: [["$", "$"], ["\\(", "\\)"]],
@@ -17,7 +17,15 @@ const config = {
 }
 
 export function MathProvider({ children }: { children: ReactNode }) {
-  return <MathJaxContext config={config}>{children}</MathJaxContext>
+  return (
+    <MathJaxContext
+      version={3}
+      config={config}
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    >
+      {children}
+    </MathJaxContext>
+  )
 }
 
 export function Tex({ children, className }: { children: string; className?: string }) {
