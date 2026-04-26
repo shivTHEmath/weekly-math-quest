@@ -215,7 +215,7 @@ export default function ProblemPanel({
               {state.solved ? "You solved it!" : "Solution revealed"}
             </div>
             <p className="text-sm text-muted-foreground mt-1">
-              {state.solved ? "Nice work — you've been added to the leaderboard." : "You've ended this attempt; you can no longer submit for this problem."}
+              {state.solved ? "Nice work!" : "You've ended this attempt; you can no longer submit for this problem."}
             </p>
           </div>
         )}
