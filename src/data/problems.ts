@@ -40,14 +40,40 @@ export const PROBLEMS: WeekProblems[] = [
   {
     week: 1,
     divisionA: {
-      statement: "A lake contains $250$ trout, along with a variety of other fish. When a marine biologist catches and releases a sample of $180$ fish from the lake, $30$ are identified as trout. Assume that the ratio of trout to the total number of fish is the same in both the sample and the lake. How many fish are there in the lake?",
-      answers: ["1500"],
-      solution: "Note that $$\\frac{\\text{number of trout}}{\\text{total number of fish}} = \\frac{30}{180} = \\frac{1}{6}.$$ So, the total number of fish is $6$ times the number of trout. Since the lake contains $250$ trout, there are $250\\cdot 6 = \\boxed{1500}$ fish in the lake.",
+      statement: "How many $3$-digit odd numbers have an even sum of digits?",
+      answers: ["225"],
+      solution: "Let the digits be $a$ (hundreds), $b$ (tens), $c$ (units). Since the number is odd, $c$ has $5$ choices: $1,3,5,7,9$.\n\nFor the sum $a+b+c$ to be even, and since $c$ is odd, $a+b$ must be odd. So one of $a,b$ is odd and the other is even.\n\nWe count the cases:\n- $a$ odd ($5$ choices), $b$ even ($5$ choices): $25$\n- $a$ even ($4$ choices, since $a\\neq 0$), $b$ odd ($5$ choices): $20$\n\nSo there are $25+20=45$ choices for $a,b$, and $5$ choices for $c$:\n$$45 \\cdot 5 = \\boxed{225}.$$",
     },
     divisionB: {
-      statement: "Fifteen integers $a_1, a_2, a_3, \\dots, a_{15}$ are arranged in order on a number line. The integers are equally spaced and have the property that $$1 \\le a_1 \\le 10, \\quad 13 \\le a_2 \\le 20, \\quad \\text{and} \\quad 241 \\le a_{15} \\le 250.$$ What is the sum of digits of $a_{14}$?",
-      answers: ["8"],
-      solution: "We can find the possible values of the common difference by finding the numbers which satisfy the conditions. To do this, we find the minimum of the last two: $241-20=221$, and the maximum: $250-13=237$. There is a difference of $13$ between them, so only $17$ and $18$ work, as $17\\cdot 13=221$, so $17$ satisfies $221\\leq 13x\\leq 237$. The number $18$ is similarly found. $19$, however, is too much.\n\nNow, we check with the first and last equations using the same method. We know $241-10\\leq 14x\\leq 250-1$. Therefore, $231\\leq 14x\\leq 249$. We test both values, and we find that $18$ is too large to satisfy this inequality. On the other hand, $17$ satisfies it, so the common difference is $17$.\n\nThe last step is to find the first term. The first term can only be from $1$ to $3$ since any larger value would render the second inequality invalid. Testing these three, we find that only $a_1=3$ satisfies all the inequalities. Therefore, $a_{14}=13\\cdot 17+3=224$. The sum of the digits is $2+2+4=\\boxed{8}$.",
+      statement: "The numbers $1$ through $12$ are written around a circle. John draws a line segment connecting a pair of numbers and writes the sum of the two numbers at the ends of the line. He does this for all possible line segments. Find the total sum of all the numbers that he writes down.",
+      answers: ["858"],
+      solution: "Let's begin by looking at which numbers $1$ will be connected to. $1$ will be connected to each of $2, 3, \\dots, 12$, hence it will be connected to $11$ numbers and appear $11$ times in the sum. However, there's nothing special about $1$ — all the numbers from $1$ through $12$ will appear $11$ times in the sum, so our answer is\n$$11(1) + 11(2) + \\dots + 11(12) = 11(1+2+\\dots+12) = \\frac{11 \\cdot 12 \\cdot 13}{2} = \\boxed{858}.$$",
+    },
+  },
+  {
+    week: 2,
+    divisionA: {
+      statement: "John shoots $8$ basketballs into a hoop, and because he is a pro, all of them make. If he could have scored either $2$ or $3$ points per shot, how many possible total point values could John have scored?",
+      answers: ["9"],
+      solution: "He can make all integer values between $8 \\cdot 2 = 16$ and $8 \\cdot 3 = 24$ inclusive (one for each number of $3$-pointers from $0$ to $8$), which is a total of $\\boxed{9}$ values.",
+    },
+    divisionB: {
+      statement: "I am choosing $3$ dots from a $3 \\times 3$ grid. What is the probability that the $3$ dots I choose are on different rows of the grid?",
+      answers: ["9/28"],
+      solution: "For the first pick we can choose any dot, so the probability is $1$.\n\nAfter choosing the first dot, there are $8$ dots left. In the same row as the first dot, there are $2$ remaining dots, so $6$ of the remaining $8$ dots are in different rows. The probability that the second dot is in a different row is $\\dfrac{6}{8}$.\n\nAfter choosing the second dot, two different rows have been used. There are now $7$ dots left total, and exactly one full row of $3$ dots remains untouched. For the third dot to be in a different row from the first two, it must come from this remaining row, so the probability is $\\dfrac{3}{7}$.\n\nTherefore, the desired probability is\n$$1 \\cdot \\frac{6}{8} \\cdot \\frac{3}{7} = \\frac{18}{56} = \\boxed{\\frac{9}{28}}.$$",
+    },
+  },
+  {
+    week: 3,
+    divisionA: {
+      statement: "Let $f(x)$ denote the remainder when $x$ is divided by $9$. Find $$f\\big(f(1) + f(2) + \\dots + f(2026)\\big).$$",
+      answers: ["1"],
+      solution: "First, compute $S = f(1)+f(2)+\\cdots+f(2026)$.\n\nObserve the repeating pattern $f(1),f(2),\\dots,f(9) = 1,2,3,4,5,6,7,8,0$, whose sum is $36$. So every block of $9$ consecutive integers contributes $36$.\n\nWrite $2026 = 9 \\cdot 225 + 1$. So there are $225$ full blocks from $1$ to $2025$, plus one extra term $2026$.\n\nThus $S = 225 \\cdot 36 + f(2026)$. Since $2026 = 9 \\cdot 225 + 1$, we have $f(2026)=1$, giving\n$$S = 225 \\cdot 36 + 1 = 8101.$$\n\nFinally, $8100$ is divisible by $9$, so $f(S) = \\boxed{1}.$",
+    },
+    divisionB: {
+      statement: "The operation $\\#$ is defined as $a \\,\\#\\, b = \\sqrt{a^2 + b^2}$. Compute $$\\left(\\sqrt{1} \\,\\#\\, \\left(\\sqrt{2} \\,\\#\\, \\left(\\dots \\left(\\sqrt{48} \\,\\#\\, \\sqrt{49}\\right) \\dots \\right)\\right)\\right)^2.$$",
+      answers: ["1225"],
+      solution: "Since $(a \\# b)^2 = a^2 + b^2$, each application of the operation (after squaring the final result) simply adds the squares of all the terms involved. So\n$$\\left(\\sqrt{1} \\# \\left(\\sqrt{2} \\# \\left(\\dots \\# \\sqrt{49}\\right)\\right)\\right)^2 = 1 + 2 + 3 + \\cdots + 49 = \\frac{49 \\cdot 50}{2} = \\boxed{1225}.$$",
     },
   },
 ]
