@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react"
-import { Tex } from "./Math"
+import { Tex, AsciiTex } from "./Math"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -163,7 +163,7 @@ export default function ProblemPanel({
             </div>
             {answer && (
               <div className="text-sm text-muted-foreground">
-                Preview: <span className="text-foreground"><Tex>{`$${answer}$`}</Tex></span>
+                Preview: <span className="text-foreground"><AsciiTex>{answer}</AsciiTex></span>
               </div>
             )}
             <Accordion type="single" collapsible className="rounded-2xl border border-border bg-secondary/30 px-4">
