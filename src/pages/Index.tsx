@@ -21,8 +21,8 @@ const Index = () => {
             <span className="inline-flex items-center gap-2 rounded-full bg-card/80 backdrop-blur px-3 py-1 text-xs font-medium text-muted-foreground border border-border">
               <Sparkles className="w-3.5 h-3.5 text-accent" /> STEMist Mathathon
             </span>
-            <h1 className="mt-4 font-display text-4xl md:text-6xl font-extrabold tracking-tight">
-              Problem of the <span className="text-primary">Week</span>
+            <h1 className="mt-4 font-display text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
+              Problem of the Week
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-lg">
               The new Problem of the Week drops every Sunday. It's great practice for the STEMist Mathathon: just choose
