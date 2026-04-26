@@ -25,8 +25,8 @@ const Index = () => {
               Problem of the <span className="text-primary">Week</span>
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-lg">
-              The new Problem of the Week drops every Sunday. It's great practice for the STEMist Mathathon — choose the
-              problem from your division and give it a try! However, feel free to try both problems if you'd like!
+              The new Problem of the Week drops every Sunday. It's great practice for the STEMist Mathathon: just choose
+              the problem from your division and give it a try! However, feel free to try both problems if you'd like!
             </p>
             <div className="mt-5 flex justify-center">
               <CountdownToNextRelease />
