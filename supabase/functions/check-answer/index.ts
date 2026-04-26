@@ -69,7 +69,7 @@ function answersMatch(userInput: string, accepted: string[]): boolean {
     }
     const accNum = tryNumeric(a)
     if (userNum !== null && accNum !== null) {
-      if (Math.abs(userNum - accNum) < 1e-10 || Math.abs(userNum - accNum) / Math.max(Math.abs(accNum), 1) < 1e-10) {
+      if (Math.abs(userNum - accNum) < 1e-8 || Math.abs(userNum - accNum) / Math.max(Math.abs(accNum), 1) < 1e-8) {
         return true
       }
     }
