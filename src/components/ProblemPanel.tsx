@@ -9,7 +9,6 @@ import { CheckCircle2, XCircle, Flag, Loader2, Lock } from "lucide-react"
 import { supabase } from "@/integrations/supabase/client"
 import { getClientId } from "@/lib/clientId"
 import { toast } from "sonner"
-import Leaderboard from "./Leaderboard"
 import {
   Accordion,
   AccordionContent,
@@ -46,7 +45,6 @@ export default function ProblemPanel({
   const [submitting, setSubmitting] = useState(false)
   const [feedback, setFeedback] = useState<"correct" | "wrong" | null>(null)
   const [secondsLeft, setSecondsLeft] = useState(0)
-  const [refreshLb, setRefreshLb] = useState(0)
   const tickRef = useRef<number | null>(null)
 
   // Reset state when week/division changes
@@ -100,8 +98,7 @@ export default function ProblemPanel({
         const next = { ...state, solved: true, lastAttemptAt: Date.now() }
         setState(next); saveState(weekId, division, next)
         setFeedback("correct")
-        setRefreshLb((k) => k + 1)
-        toast.success("Correct! Added to the leaderboard 🎉")
+        toast.success("Correct! 🎉")
       } else {
         const next = { ...state, lastAttemptAt: Date.now() }
         setState(next); saveState(weekId, division, next)
@@ -127,7 +124,7 @@ export default function ProblemPanel({
   const showSolution = state.solved || state.gaveUp
 
   return (
-    <div className="grid lg:grid-cols-[1fr_320px] gap-6">
+    <div>
       <div className="rounded-3xl border border-border bg-card p-6 md:p-8 shadow-soft">
         <div className="flex items-center gap-2 mb-4">
           <Badge variant="secondary" className="rounded-full">
@@ -234,10 +231,6 @@ export default function ProblemPanel({
             </p>
           </div>
         )}
-      </div>
-
-      <div className="space-y-4">
-        <Leaderboard weekId={weekId} division={division} refreshKey={refreshLb} />
       </div>
     </div>
   )
